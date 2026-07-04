@@ -221,3 +221,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+.venv/
+polymarket_dbt/target/
+polymarket_dbt/dbt_packages/
+polymarket_dbt/logs/
