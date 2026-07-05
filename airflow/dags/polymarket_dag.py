@@ -6,7 +6,7 @@ from datetime import datetime
 with DAG(
     dag_id="polymarket_pipeline",
     start_date=datetime(2026, 1, 1),
-    schedule=None,          # None = manual trigger only (for now)
+    schedule="@hourly",     # runs automatically every hour,     --- day 5     # None = manual trigger only (for now)
     catchup=False,
     tags=["polymarket"],
 ) as dag:
