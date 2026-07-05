@@ -226,3 +226,10 @@ __marimo__/
 polymarket_dbt/target/
 polymarket_dbt/dbt_packages/
 polymarket_dbt/logs/
+
+airflow_venv/
+airflow/logs/
+airflow/airflow.db
+airflow/airflow.db-shm
+airflow/airflow.db-wal
+airflow/simple_auth_manager_passwords.json.generated
