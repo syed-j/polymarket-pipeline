@@ -1,8 +1,11 @@
 import chromadb
+import os
 
-# connect to your existing Chroma database
-client = chromadb.PersistentClient(path="chroma_db")
+# absolute path to chroma_db in the project root, regardless of where we run from
+CHROMA_PATH = os.path.join(os.path.dirname(__file__), "..", "chroma_db")
+client = chromadb.PersistentClient(path=CHROMA_PATH)
 collection = client.get_collection(name="markets")
+
 
 def retrieve(question, n=5):
     """Find the n markets most relevant to the question."""
