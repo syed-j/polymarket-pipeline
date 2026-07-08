@@ -245,3 +245,6 @@ airflow/airflow.db-wal
 airflow/logs/
 airflow/simple_auth_manager_passwords.json.generated
 airflow_venv/
+
+chroma_db/
+polymarket.duckdb

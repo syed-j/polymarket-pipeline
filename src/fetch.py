@@ -7,11 +7,25 @@ from datetime import datetime, timezone
 pd.set_option("display.max_columns", None)
 pd.set_option("display.width", None)
 
-# --- Job 1: FETCH ---
+# --- Job 1: FETCH (paginated to get more than 100) ---
 url = "https://gamma-api.polymarket.com/markets"
-params = {"active": "true", "closed": "false", "limit": 50}
-response = requests.get(url, params=params)
-markets = response.json()
+
+all_markets = []
+for offset in range(0, 500, 100):        # 0, 100, 200, 300, 400 = 5 pages
+    params = {
+        "active": "true",
+        "closed": "false",
+        "limit": 100,
+        "offset": offset
+    }
+    response = requests.get(url, params=params)
+    page = response.json()
+    if not page:                          # stop if a page comes back empty
+        break
+    all_markets.extend(page)
+
+markets = all_markets
+print(f"Fetched {len(markets)} markets from API")
 
 # --- Job 2: CLEAN ---
 df = pd.DataFrame(markets)
