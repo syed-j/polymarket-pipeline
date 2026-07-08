@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from rag import ask   # reuse your Day 12 RAG engine
-
+try:
+    from rag import ask          # works when running from inside src/
+except ModuleNotFoundError:
+    from src.rag import ask       # works inside Docker (running from /app)
 app = FastAPI(title="Polymarket RAG Chatbot")
 
 class Query(BaseModel):
